@@ -1,8 +1,9 @@
 find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
 
-add_executable(board_test board_test.cpp)
-target_include_directories(board_test PRIVATE ${PROJECT_SOURCE_DIR}/src)
-target_link_libraries(board_test ${GTEST_LIBRARIES} pthread)
+add_executable(tictactoe_board_test board_test.cpp)
 
-add_test(NAME board_test COMMAND board_test)
+target_include_directories(tictactoe_board_test PRIVATE ${PROJECT_SOURCE_DIR}/src)
+
+target_link_libraries(tictactoe_board_test GTest::GTest GTest::Main)
+
+add_test(NAME board_test COMMAND tictactoe_board_test)

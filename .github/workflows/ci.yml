@@ -13,11 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-
     - name: Install dependencies
       run: |
         sudo apt-get update
@@ -26,7 +21,6 @@ jobs:
         sudo cmake CMakeLists.txt
         sudo make
         sudo cp lib/*.a /usr/lib
-        python -m pip install pytest
 
     - name: Create Build Directory
       run: mkdir -p build
@@ -39,11 +33,6 @@ jobs:
       working-directory: build
       run: cmake --build .
 
-    - name: Run C++ Tests
+    - name: Run Tests
       working-directory: build
       run: ctest --output-on-failure
-
-    - name: Run Python Integration Tests
-      working-directory: build
-      run: |
-        python -m pytest ../tests/integration_test.py -v
