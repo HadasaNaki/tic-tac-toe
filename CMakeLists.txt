@@ -4,9 +4,14 @@ project(TicTacToe)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Add source files
 add_executable(tictactoe
-    main.cpp
+    src/main.cpp
 )
 
+# Include directory for header files
+include_directories(${PROJECT_SOURCE_DIR}/src)
+
+# Enable testing
 enable_testing()
 add_subdirectory(tests)
