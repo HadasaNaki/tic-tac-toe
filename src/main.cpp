@@ -1,5 +1,6 @@
 #include "game.hpp"
 #include <iostream>
+#include <limits>
 
 void displayBoard(const Board& board) {
     int size = board.getSize();
